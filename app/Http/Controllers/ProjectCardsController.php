@@ -79,7 +79,7 @@ class ProjectCardsController extends Controller
         $projectCard->update($validated);
 
         // Redirect so the index route re-queries a fresh collection
-        return redirect()->route('project-cards.index');
+        return redirect()->route('projectCards');
     }
 
     // Delete a specific project card by id
