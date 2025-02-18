@@ -11,11 +11,11 @@
 
         <!-- Desktop menu -->
         <ul class="hidden md:flex flex-row items-center justify-center gap-4">
-            <li><a href="/" class="hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Home</a></li>
-            <li><a href="/club_150" class="hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Club 150</a></li>
-            <li><a href="/programme" class="hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Programme</a></li>
-            <li><a href="/pillar_project" class="hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Pillar Project</a></li>
-            <li><a href="/alumni" class="hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Alumni</a></li>
+            <li><a href="/" class="{{ request()->is('/') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Home</a></li>
+            <li><a href="/club_150" class="{{ request()->is('/club_150') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Club 150</a></li>
+            <li><a href="/programme" class="{{ request()->is('/programme') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Programme</a></li>
+            <li><a href="/pillar_project" class="{{ request()->is('/pillar_project') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Pillar Project</a></li>
+            <li><a href="/alumni" class="{{ request()->is('/alumni') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Alumni</a></li>
         </ul>
 
         <div class="hidden md:flex flex-col items-center gap-2">

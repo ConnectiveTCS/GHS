@@ -16,9 +16,11 @@
             'bgColor' => '#262A40',
             'mt' => 2
 ],
+'hidden' => 'hidden',
+'hideImg' => 'block',
     ])
     {{-- Red Square --}}
-    <section class="bg-white h-[70vh] flex flex-col justify-center items-center" style="background-image: url('{{ asset('assets/Section_2_BG.png') }}'); background-size: cover; background-position: center;">
+    <section class="bg-white h-[70vh] flex flex-col justify-center items-center" style="background-image: url('') }}'); background-size: cover; background-position: center;">
         {{-- Overlay --}}
         <div class="w-screen h-[70vh] z-10 heroBG absolute"></div>
         {{-- Center Content --}}

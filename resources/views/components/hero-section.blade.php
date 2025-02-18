@@ -5,6 +5,8 @@
     {{-- Center Content --}}
     <div
         class="text-black text-center z-20 relative flex flex-col justify-center items-center rounded-md w-full sm:max-w-[50%] text-balance py-2 px-4 sm:px-10 bg-white bg-opacity-80 backdrop-blur shadow-xl">
+        <img src="{{ asset('assets/150Badge.png') }}" alt="" class="w-auto min-h-20 max-h-[150px] {{ $hideImg ?? 'display:block' }}">
+        <div class="{{ $hidden  ?? 'flex' }} flex-row items-center gap-2 " style=" "><hr  style="border: 2px solid red; width: 50px"><p>{{ $topPHeading ?? 'Become a Part of Our Legacy' }}</p><hr style="border: 2px solid red; width: 50px"></p></div>
         <h1 class="montagu-slab-h1 text-center text-4xl md:text-5xl">
             {{ $h1 ?? 'Reuniting Generations, Rekindling Memories.' }}
         </h1>
