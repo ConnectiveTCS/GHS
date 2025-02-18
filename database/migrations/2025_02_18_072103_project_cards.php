@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->integer('position')->default(0)->nullable();
+            $table->text('status', ['Current', 'Upcoming', 'Completed'])->default('Current');
             $table->text('completion_percentage')->nullable();
             $table->text('project_timeline')->nullable();
             $table->timestamps();

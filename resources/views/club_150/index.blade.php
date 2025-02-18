@@ -28,13 +28,7 @@
         </h1>
         <p class="text-2xl md:text-xl text-pretty w-[35%]">Thanks to your generous support, we're transforming Girls High
             School for future generations. Here’s a look at the projects your donations are making possible.</p>
-        {{-- Projects Container --}}
-        {{-- <div class="flex flex-col gap-4 bg-[#262A40] w-full mt-8 p-4"> --}}
-        {{-- Project 1 --}}
-        {{-- <div>
-                <h3 class="montagu-slab-h1 text-4xl mb-2 text-left text-white">The Garden Revival</h3>
-            </div>
-        </div> --}}
+            {{-- Projects Container --}}
         <div class="flex flex-col gap-4 bg-[#262A40] w-full mt-8 rounded-[20px] p-8">
         <!-- Tabs -->
         <div class="flex justify-start my-6">
@@ -46,13 +40,10 @@
         <!-- Project Cards -->
         <div class="mx-auto space-y-8 px-4 w-full">
             <!-- Garden Revival -->
-            @include('components.project-cards', [
-                'title' => 'The Garden Revival',
-                'image' => 'assets/garden-revival.jpg',
-                'description' => 'Revamping the school’s garden, introducing indigenous plants and interactive learning stations for educational purposes.',
-                'dateOfCompletion' => '📅 Oct – Dec 2026',
-                'completionPercentage' => '🏗️ 75% Completion',
-            ])
+            @foreach ( $projectCards as $card )
+                
+            @include('components.projectCards')
+            @endforeach
         </div>
         </div>
     </section>

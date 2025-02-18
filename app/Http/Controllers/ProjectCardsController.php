@@ -12,6 +12,10 @@ class ProjectCardsController extends Controller
     {
         return response()->json(ProjectCards::all());
     }
+    public function club150Index(ProjectCards $projectCards)
+    {
+        return view('club_150.index', compact('projectCards'));
+    }
 
     // Create a new project card
     public function store(Request $request)
@@ -20,6 +24,7 @@ class ProjectCardsController extends Controller
             'title' => 'required|string',
             'image' => 'nullable|file|mimes:jpg,jpeg,png,svg',
             'description' => 'nullable|string',
+            'status' => 'nullable|string',
             'position' => 'nullable|integer',
             'completion_percentage' => 'nullable|string',
             'project_timeline' => 'nullable|string',
@@ -29,18 +34,20 @@ class ProjectCardsController extends Controller
             $validated['image'] = $request->file('image')->store('project_cards', 'public');
         }
 
-        $projectCard = ProjectCards::create($validated);
-        // Auto-generating project_id same as the primary key id
-        $projectCard->update(['project_id' => $projectCard->id]);
+        $card = ProjectCards::create($validated);
+        $card->update(['project_id' => $card->id]);
 
-        return response()->json($projectCard, 201);
+        // Requery all cards to pass a collection to the index view
+        $projectCards = ProjectCards::all();
+        return view('club_150.project_card.index', compact('projectCards'));
     }
 
     // Show a specific project card by id
     public function show($id)
     {
         $projectCard = ProjectCards::findOrFail($id);
-        return response()->json($projectCard);
+        // return response()->json($projectCard);
+        return view('club_150.index', compact('projectCard'));
     }
 
     // New edit method to pass the project card to the view
@@ -60,6 +67,7 @@ class ProjectCardsController extends Controller
             'title' => 'sometimes|required|string',
             'image' => 'nullable|file|mimes:jpg,jpeg,png,svg',
             'description' => 'nullable|string',
+            'status' => 'nullable|string',
             'position' => 'nullable|integer',
             'completion_percentage' => 'nullable|string',
             'project_timeline' => 'nullable|string',
@@ -71,7 +79,9 @@ class ProjectCardsController extends Controller
 
         $projectCard->update($validated);
 
-        return view('club_150.project_card.index', compact('projectCard'));
+        // Requery all cards to ensure index view gets a collection
+        $projectCards = ProjectCards::all();
+        return view('club_150.project_card.index', compact('projectCards'));
     }
 
     // Delete a specific project card by id

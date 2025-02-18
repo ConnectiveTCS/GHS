@@ -14,7 +14,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 // Club 150
 Route::get('/club_150', function () {
-    return view('club_150.index');
+    $projectCards = \App\Models\ProjectCards::all();
+    return view('club_150.index', compact('projectCards'));
 });
 // Programme
 Route::get('/programme', function () {

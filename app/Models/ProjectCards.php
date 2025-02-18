@@ -12,6 +12,7 @@ class ProjectCards extends Model
         'image',
         'title',
         'description',
+        'status',
         'position',
         'completion_percentage',
         'project_timeline',

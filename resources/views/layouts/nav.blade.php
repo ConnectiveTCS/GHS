@@ -1,7 +1,7 @@
 <nav class="relative bg-[#262A40] text-white px-4 md:px-8 py-2">
     <div class="flex items-center justify-between">
-        <img src="{{ asset('assets/GHS_Badge.png') }}" alt="GHS Logo" class="h-12 w-12 md:h-16 md:w-16">
-        
+       <a href="/"> <img src="{{ asset('assets/GHS_Badge.png') }}" alt="GHS Logo" class="h-12 w-12 md:h-16 md:w-16">
+        </a>
         <!-- Mobile menu button -->
         <button class="md:hidden text-white hover:text-[#DE2413]" onclick="toggleMenu()">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
