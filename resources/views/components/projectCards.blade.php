@@ -7,8 +7,8 @@
             <img src="{{ $card->image }}" alt="Garden Revival"
                 class=" h-[400px] min-w-[800px] md:w-1/3 rounded-lg">
         </div>
-        <div class="md:ml-6 flex flex-col items-center justify-center text-white text-center">
-            <p class="mb-4 text-xl w-[80%]">
+        <div class="md:ml-6 flex flex-col items-center justify-center text-white text-center w-full">
+            <p class="mb-4 text-2xl">
                 {{ $card->description ?? 'Revamping the school’s garden, introducing indigenous plants and interactive learning stations for educational purposes.' }}
             </p>
             <p class="text-gray-300">

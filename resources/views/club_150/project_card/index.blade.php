@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-6xl mx-auto px-4 py-6">
+    <div class="max-w-6xl mx-auto px-4 py-6 min-h-[80vh]">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-3xl font-bold">Project Cards</h2>
             <a href="/create"

@@ -34,14 +34,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('project-cards', ProjectCardsController::class);
+
+    // Use only the resource route for project cards
+    Route::resource('/project-cards', ProjectCardsController::class);
+    
+    // Optional: you may keep a create route if needed:
     Route::get('/create', function () {
         return view('club_150.project_card.create');
     });
     Route::get('/projects', function () {
         $projectCards = \App\Models\ProjectCards::all();
         return view('club_150.project_card.index', compact('projectCards'));
-    });
+    })->name('projectCards');
 });
 
 require __DIR__ . '/auth.php';

@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class ProjectCardsController extends Controller
 {
     // List all project cards
-    public function index()
+    public function index(ProjectCards $projectCards)
     {
-        return response()->json(ProjectCards::all());
+        return view('club_150.project_card.index', compact('projectCards'));
     }
     public function club150Index(ProjectCards $projectCards)
     {
@@ -37,9 +37,8 @@ class ProjectCardsController extends Controller
         $card = ProjectCards::create($validated);
         $card->update(['project_id' => $card->id]);
 
-        // Requery all cards to pass a collection to the index view
-        $projectCards = ProjectCards::all();
-        return view('club_150.project_card.index', compact('projectCards'));
+        // Redirect so the index route re-queries a fresh collection
+        return redirect()->route('projectCards');
     }
 
     // Show a specific project card by id
@@ -79,9 +78,8 @@ class ProjectCardsController extends Controller
 
         $projectCard->update($validated);
 
-        // Requery all cards to ensure index view gets a collection
-        $projectCards = ProjectCards::all();
-        return view('club_150.project_card.index', compact('projectCards'));
+        // Redirect so the index route re-queries a fresh collection
+        return redirect()->route('project-cards.index');
     }
 
     // Delete a specific project card by id
@@ -90,6 +88,7 @@ class ProjectCardsController extends Controller
         $projectCard = ProjectCards::findOrFail($id);
         $projectCard->delete();
 
-        return response()->json(null, 204);
+        // Redirect so the index route re-queries a fresh collection
+        return redirect()->route('projectCards');
     }
 }
