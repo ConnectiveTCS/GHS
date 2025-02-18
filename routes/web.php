@@ -37,6 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/create', function () {
         return view('club_150.project_card.create');
     });
+    Route::get('/projects', function () {
+        $projectCards = \App\Models\ProjectCards::all();
+        return view('club_150.project_card.index', compact('projectCards'));
+    });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

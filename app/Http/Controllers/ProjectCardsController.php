@@ -43,6 +43,13 @@ class ProjectCardsController extends Controller
         return response()->json($projectCard);
     }
 
+    // New edit method to pass the project card to the view
+    public function edit($id)
+    {
+        $projectCard = ProjectCards::findOrFail($id);
+        return view('club_150.project_card.edit', compact('projectCard'));
+    }
+
     // Update a specific project card by id
     public function update(Request $request, $id)
     {
