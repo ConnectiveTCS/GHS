@@ -2,7 +2,7 @@
     <div class="max-w-6xl mx-auto px-4 py-6 min-h-[80vh]">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-3xl font-bold">Events</h2>
-            <a href="{{ route('events.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            <a href="{{ route('events.create') }}" class="bg-black text-white px-4 py-2 rounded hover:bg-slate-600">
                 Create New Event
             </a>
         </div>

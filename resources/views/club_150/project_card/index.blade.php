@@ -3,7 +3,7 @@
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-3xl font-bold">Project Cards</h2>
             <a href="/create"
-                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                class="bg-black text-white px-4 py-2 rounded hover:bg-slate-600">
                 Create New Card
             </a>
         </div>

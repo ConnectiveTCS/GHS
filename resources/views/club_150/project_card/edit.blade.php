@@ -59,7 +59,7 @@
             </div> 
             <div class="mt-6">
                 <button type="submit"
-                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    class="w-full bg-black text-white px-4 py-2 rounded hover:bg-slate-600">
                     Update Project Card
                 </button>
             </div>
