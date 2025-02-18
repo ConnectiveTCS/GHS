@@ -33,25 +33,27 @@
             <h1 class="font-bold text-red-500 text-center text-lg">Admin Menu</h1>
             <ul class="hidden md:flex flex-row items-center justify-center gap-4">
                 <li><a href="/projects"
-                        class="{{ request()->is('/') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Projects</a>
+                        class="{{ request()->is('/projects') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Projects</a>
                 </li>
-                <li><a href="/club_150"
-                        class="{{ request()->is('/club_150') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Club
-                        150</a></li>
-                <li><a href="/programme"
-                        class="{{ request()->is('/programme') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Programme</a>
+                <li><a href="/events"
+                        class="{{ request()->is('/events') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Events</a>
                 </li>
-                <li><a href="/pillar_project"
-                        class="{{ request()->is('/pillar_project') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Pillar
-                        Project</a></li>
-                <li><a href="/alumni"
-                        class="{{ request()->is('/alumni') ? 'text-white border-b-2 font-bold' : '' }} hover:border-b-2 hover:transition-colors hover:text-[#DE2413]">Alumni</a>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <a href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </a>
+                </form>
                 </li>
 
             </ul>
             @endauth
         </div>
-        <div class="hidden md:flex flex-col items-center gap-2">
+        <div class="hidden md:flex flex-row items-center gap-2">
             <a href="/alumni_register"
                 class="bg-[#DE2413] text-white px-4 py-2 w-full text-center hover:bg-white hover:text-[#DE2413] rounded-md transition-all">Register</a>
             <a href="/donate"
