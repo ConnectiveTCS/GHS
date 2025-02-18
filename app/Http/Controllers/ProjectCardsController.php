@@ -17,16 +17,21 @@ class ProjectCardsController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'project_id' => 'required|integer',
             'title' => 'required|string',
-            'image' => 'nullable|string',
+            'image' => 'nullable|file|mimes:jpg,jpeg,png,svg',
             'description' => 'nullable|string',
             'position' => 'nullable|integer',
             'completion_percentage' => 'nullable|string',
             'project_timeline' => 'nullable|string',
         ]);
 
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('project_cards', 'public');
+        }
+
         $projectCard = ProjectCards::create($validated);
+        // Auto-generating project_id same as the primary key id
+        $projectCard->update(['project_id' => $projectCard->id]);
 
         return response()->json($projectCard, 201);
     }
@@ -46,16 +51,20 @@ class ProjectCardsController extends Controller
         $validated = $request->validate([
             'project_id' => 'sometimes|required|integer',
             'title' => 'sometimes|required|string',
-            'image' => 'nullable|string',
+            'image' => 'nullable|file|mimes:jpg,jpeg,png,svg',
             'description' => 'nullable|string',
             'position' => 'nullable|integer',
             'completion_percentage' => 'nullable|string',
             'project_timeline' => 'nullable|string',
         ]);
 
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('project_cards', 'public');
+        }
+
         $projectCard->update($validated);
 
-        return response()->json($projectCard);
+        return view('club_150.project_card.index', compact('projectCard'));
     }
 
     // Delete a specific project card by id

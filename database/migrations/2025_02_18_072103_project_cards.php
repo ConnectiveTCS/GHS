@@ -14,7 +14,8 @@ return new class extends Migration
         //
         Schema::create('project_cards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->constrained()->cascadeOnDelete();
+            // Removed foreign constraint for project_id since the projects table does not exist.
+            $table->unsignedBigInteger('project_id')->nullable();
             $table->longText('image')->nullable();
             $table->string('title');
             $table->text('description')->nullable();
