@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectCardsController;
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::get('/', function () {
@@ -18,9 +20,7 @@ Route::get('/club_150', function () {
     return view('club_150.index', compact('projectCards'));
 });
 // Programme
-Route::get('/programme', function () {
-    return view('programme.index');
-});
+Route::get('/programme', [EventsController::class, 'programme'])->name('programme');
 // Pillar Project
 Route::get('/pillar_project', function () {
     return view('pillar_project.index');

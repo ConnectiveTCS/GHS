@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/autoscroll.css') }}">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -71,6 +72,8 @@
         </main>
         @include('layouts.footer')
     </div>
+    <script src="{{ asset('js/autoscroll.js') }}"></script>
+    <script src="{{ asset('js/lightbox.js') }}"></script>
 </body>
 
 </html>

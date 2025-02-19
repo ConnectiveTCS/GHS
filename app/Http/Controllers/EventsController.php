@@ -14,6 +14,26 @@ class EventsController extends Controller
         return view('events.index', compact('events'));
     }
 
+    public function programme()
+    {
+        $events = Events::all();
+        $months = [];
+        foreach ($events as $event) {
+            $month = date('F', strtotime($event->event_date));
+            if (!in_array($month, $months)) {
+                $months[] = $month;
+            }
+        }
+        // Title and Description grouped together with date number
+        $grouped = [];
+        foreach ($events as $event) {
+            $month = date('F', strtotime($event->event_date));
+            $day = date('j', strtotime($event->event_date));
+            $grouped[$month][$day][] = $event;
+        }
+        return view('programme.index', compact('events', 'grouped', 'months'));
+    }
+
     // Show the form for creating a new event.
     public function create()
     {
@@ -24,13 +44,17 @@ class EventsController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'event_name' => 'required|string|max:255',
+            'event_name'        => 'required|string|max:255',
             'event_description' => 'required|string',
-            'event_date' => 'required|date',
-            'event_location' => 'required|string|max:255',
-            'event_image' => 'required|string|max:255', // adjust if handling file uploads
+            'event_date'        => 'required|date',
+            'event_location'    => 'required|string|max:255',
+            'event_image'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        if ($request->hasFile('event_image')) {
+            $data['event_image'] = $request->file('event_image')->store('events', 'public');
+        }
         Events::create($data);
+        // dd($data);
         return redirect()->route('events.index');
     }
 
@@ -50,12 +74,15 @@ class EventsController extends Controller
     public function update(Request $request, Events $event)
     {
         $data = $request->validate([
-            'event_name' => 'required|string|max:255',
+            'event_name'        => 'required|string|max:255',
             'event_description' => 'required|string',
-            'event_date' => 'required|date',
-            'event_location' => 'required|string|max:255',
-            'event_image' => 'required|string|max:255',
+            'event_date'        => 'required|date',
+            'event_location'    => 'required|string|max:255',
+            'event_image'       => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        if ($request->hasFile('event_image')) {
+            $data['event_image'] = $request->file('event_image')->store('events', 'public');
+        }
         $event->update($data);
         return redirect()->route('events.index');
     }
